@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Przelewy bankowe QR Code</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #qrcode {
+            padding: 20px;
+            margin-top: 20px;
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        #generated-text {
+            margin-top: 10px;
+            font-weight: bold;
+            display: none;
+            bottom: 10px;
+            width: 100%;
+            margin-top: 10px;
+            color: black;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: left;
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+        }
+
+        #success-text {
+            margin-top: 10px;
+            font-weight: bold;
+            display: none;
+            bottom: 10px;
+            width: 100%;
+            margin-top: 10px;
+            color: #4caf50;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #error-text {
+            margin-top: 10px;
+            font-weight: bold;
+            display: none;
+            bottom: 10px;
+            width: 100%;
+            margin-top: 10px;
+            color: #ff0000;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form class="form-anticlear" onsubmit="generateQRCode(); return false;">
+        <label for="rachunek">Rachunek:</label>
+        <input type="text" id="rachunek" placeholder="Wprowadź rachunek">
+
+        <label for="kwota">Kwota:</label>
+        <input type="text" id="kwota" placeholder="Wprowadź kwotę">
+
+        <label for="odbiorca">Odbiorca:</label>
+        <input type="text" id="odbiorca" placeholder="Wprowadź odbiorcę">
+
+        <label for="tytul">Tytuł:</label>
+        <input type="text" id="tytul" placeholder="Wprowadź tytuł">
+
+        <button type="submit">Generuj kod QR</button>
+
+        <!-- Napisy po wygenerowaniu -->
+        <div id="success-text">Wygenerowano!</div>
+        <div id="generated-text"></div>
+        <div id="error-text">Błąd generowania kodu QR. Spróbuj ponownie.</div>
+        <button type="button" style="display: none;" id="copy-text-button">Kopiuj tekst do schowka</button>
+        <div id="qrcode"></div>
+        <button type="button" style="display: none;" id="copy-qrcode-button">Kopiuj obrazek do schowka</button>
+    </form>
+    <!-- Load the library -->
+    <script src="main.min.js"></script>
+</body>
+
+</html>
